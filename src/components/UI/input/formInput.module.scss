@@ -1,0 +1,18 @@
+.formInput {
+    padding: 8px 20px;
+    outline: none;
+    border: #000 solid 1px;
+    border-radius: 20px;
+    background: none;
+    transition: 300ms;
+
+    &:focus {
+        transform: scale(1.05);
+    }
+
+    &::placeholder {
+        text-align: center;
+        color: #000;
+
+    }
+}

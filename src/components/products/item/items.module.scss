@@ -1,0 +1,15 @@
+.main {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    padding: 0 20px;
+    gap: 110px;
+}
+
+
+.option {
+    background: none;
+    border: 1px solid #000;
+    padding: 10px;
+    border-radius: 20px;
+}

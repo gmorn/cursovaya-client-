@@ -1,0 +1,22 @@
+.category {
+    display: flex;
+    padding-left: 20px;
+    .categories div {
+        display: inline-block;
+        background: none;
+        border: 1px solid #000;
+        border-radius: 50px;
+        padding: 10px 20px;
+        margin-bottom: 25px;
+        margin-right: 20px;
+        cursor: pointer;
+        transition: all 500ms ease;
+    
+        &:hover {
+            border-color: #ffbd43;
+            background: #ffbd43;
+            transform: scale(1.1);
+            color: #fff;
+        }
+    }
+}
