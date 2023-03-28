@@ -1,9 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import MainButton from '../../UI/button/MainButton'
+import { addNewOrder } from '../../../store/OrderSlice'
+import MainButton from '../../UI/button/mainButton/MainButton'
 import style from './item.module.scss'
 
 export default function Item({ item }) {
+
+  const dispatch = useDispatch()
+
   return (
     <div className={style.item}>
       <Link to={`/productCart`}>
@@ -21,7 +26,7 @@ export default function Item({ item }) {
           <p>{item.rating}</p>
         </div>
       </div>
-      <MainButton>+ добавить</MainButton>
+      <MainButton onClickFunk={() => dispatch(addNewOrder(item))}>+ добавить</MainButton>
     </div>
   )
 }

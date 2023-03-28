@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
 import './App.scss'
-import { json } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { Route, Routes } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import { fetchProducts } from '../store/productsSlice'
 import Menu from '../pages/menu/Menu'
+import Header from '../components/header/Header'
+import Footer from '../components/footer/Footer'
 
 
 export default function App() {
@@ -18,7 +19,13 @@ export default function App() {
 
   return (
     <div className='App'>
-      <Menu/>
+
+      <Header/>
+      <Routes>
+        <Route path='/' element={<Menu/>}/>
+      </Routes>
+      <Footer/>
+      
     </div>
   )
 }

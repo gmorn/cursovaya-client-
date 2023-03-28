@@ -33,14 +33,15 @@ const categoriesSlise = createSlice({
                 name: 'бургеры'
             },
         ],
-        mainCategory: 0,
+        mainCategory: 'all',
     },
     reducers: {
         switchCategory(state, action) {
             state.mainCategory = action.payload
-            console.log( state.mainCategory )
         }
     }
 })
+
+export const { switchCategory } = categoriesSlise.actions
 
 export default categoriesSlise.reducer

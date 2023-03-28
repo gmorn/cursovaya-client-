@@ -6,7 +6,7 @@
   .headerTop {
     display: flex;
     justify-content: space-between;
-    padding: 10px 20px;
+    padding: 10px 40px;
 
     img {
       width: 24px;
@@ -115,44 +115,9 @@
     }
   }
 
-  .headerBottom {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    padding: 10px;
-    gap: 80px;
-    width: 1100px;
-    border-bottom: 1px solid #ffbd43;
-
-    a {
-      text-decoration: none;
-      color: #000;
-      transition: 300ms;
-
-      &:hover {
-        text-decoration: none;
-        color: #535353;
-      }
-    }
-  }
-
-  .menuButtons {
-    display: flex;
-    gap: 10px;
-
-    img {
-      transition: 300ms;
-
-      &:hover {
-        transform: scale(1.05);
-      }
-    }
-  }
-
   .basket {
     position: absolute;
-    margin-left: 850px;
+    margin-left: 800px;
     margin-top: 110px;
     background: aliceblue;
     border: 1px #000 solid;
@@ -187,146 +152,6 @@
     
     .summa {
         margin-bottom: 20px;
-    }
-  }
-}
-
-
-@media (max-width: 1200px) {
-  .header {
-    .inf {
-      flex-direction: column;
-      align-items: start;
-    }
-
-    .logo {
-      a {
-        font-size: 35px;
-        margin-right: -35px;
-      }
-    }
-
-    .topMenu {
-      .search {
-        margin-right: 20px;
-      }
-    }
-
-    .headerBottom {
-      width: 800px;
-    }
-
-    .basket {
-        margin-left: 520px;
-        margin-top: 70px;
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .header {
-    .topMenu {
-      .search {
-        margin-right: 10px;
-
-        input {
-          &:focus {
-            width: 250px;
-          }
-        }
-      }
-    }
-  
-    .headerBottom {
-      width: 600px;
-      gap: 50px;
-
-      a {
-        font-size: 14px;
-      }
-    }
-  
-    .basket {
-      margin-left: 360px;
-      margin-top: 70px;
-    }
-  }
-}
-
-@media (max-width: 480px) {
-  .header {
-    padding: 0;
-  
-    .headerTop {
-      display: flex;
-      justify-content: space-between;
-      padding: 0 0 0 10px;
-      border-bottom: 1px solid #ffbd43;
-  
-      img {
-        width: 15px;
-        cursor: pointer;
-      }
-  
-      p {
-        font-size: 12px;
-      }
-    }
-    .inf {
-      display: none;
-    }
-
-    .topMenu {
-      .search {
-        margin-right: 0;
-        margin-left: 30px;
-        input {
-          width: 0px;
-          &::placeholder {
-            visibility: hidden;
-          }
-  
-          &:focus {
-            margin: 0 auto;
-            width: 78vw;
-          }
-        }
-      }
-  
-      .userLogoBlock {
-        display: none;
-      }
-    }
-  
-    .headerBottom {
-      display: none;
-    }
-  
-    .menuButtons {
-      display: none;
-    }
-  
-    .basket {
-      display: none;
-    }
-  }
-}
-
-@media (max-width: 320px) {
-.header {
-    padding: 0;
-
-    .topMenu {
-      .search {
-        margin-left: 30px;
-        input {
-  
-          &:focus {
-            margin: 0 auto;
-            width: 70vw;
-          }
-        }
-      }
     }
   }
 }
