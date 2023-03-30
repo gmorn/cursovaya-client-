@@ -1,8 +1,13 @@
 import React from 'react'
 import style from './SmallButton.module.scss'
 
-export default function SmallButton() {
+export default function SmallButton({ children, onClickFunk }) {
   return (
-    <div>SmallButton</div>
+    <button
+      className={style.button}
+      onClick={() => onClickFunk()}
+    >
+      {children}
+    </button>
   )
 }

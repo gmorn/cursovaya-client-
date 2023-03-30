@@ -7,16 +7,41 @@ const orderSlice = createSlice ({
     },
     reducers: {
         addNewOrder(state, action) {
-            state.orders.push(action.payload)
-            console.log(action.payload);
+
+            // const test = action.payload
+
+            // const newPayload = { ...action.payload, test: 1 };
+            // action.payload = newPayload;
+
+
+            const cloneOrder = state.orders.find(order => order.id === action.payload.id)
+
+            if ( cloneOrder ) {
+                cloneOrder.count = Number(cloneOrder.count) + 1
+            } else {
+                state.orders.push(action.payload)
+            }
         },
         deliteOrder(state, action) {
             state.orders = state.orders.filter(order => order.id !== action.payload)
+        },
+        incrementCount(state, action) {
+            const cloneOrder = state.orders.find(order => order.id === action.payload.id)
+
+            cloneOrder.count = Number(cloneOrder.count) + 1
+        },
+        decrementCount(state, action) {
+            const cloneOrder = state.orders.find(order => order.id === action.payload.id)
+            
+            if (Number(cloneOrder.count) > 1) {
+                cloneOrder.count = Number(cloneOrder.count) - 1
+            }
+            
         }
     }
 
 })
 
-export const { addNewOrder, deliteOrder } = orderSlice.actions
+export const { addNewOrder, deliteOrder, incrementCount, decrementCount } = orderSlice.actions
 
 export default orderSlice.reducer

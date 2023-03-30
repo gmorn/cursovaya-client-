@@ -2,26 +2,16 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import style from './header.module.scss'
 import classNames from 'classnames'
-import Orders from '../products/order/Orders'
+import Basket from '../products/basket/Basket'
 import { useSelector } from 'react-redux'
+import SmallButton from '../UI/button/smallButton/SmallButton'
 
 export default function Header() {
   
-    const [searchForm, setSearchForm] = useState(false)
     const [inputFocus, setInputFocus] = useState(true)
     // const [inputValue, setInputValue] = useState('')
     const [cartOpen, setCartOpen] = useState(false)
     const [logoState, setLogoSate] = useState(true)
-
-    // useEffect(() => {
-    //     setOrdersPrice(() => {
-    //       let summa = 0
-    //       orders.map(elem => (
-    //         summa += Number(elem.price)
-    //       ))
-    //       return summa
-    //     })
-    //   }, [orders])
 
     const targetInput = () => {
         setInputFocus(false)
@@ -35,10 +25,6 @@ export default function Header() {
         }, 250);
     }
 
-    const searchState = () => {
-        setSearchForm(!searchForm)
-    }
-
     const basketClose = () => {
         setCartOpen(false)
     }
@@ -47,49 +33,25 @@ export default function Header() {
 
     const basketRef = useRef(null)
     const basketButtonRef = useRef(null)
-    const basketDelite = useRef(null)
 
     useEffect(() => {
         if (!basketRef) return
-
+        
         const hendelClick = (e) => {
-            // if (basketDelite.current.contains(e.target)) return
+            
             if (basketButtonRef.current.contains(e.target)) return
-            if (!basketRef.current) return
-            
-            if (!basketRef.current.contains(e.target)) {
-                basketClose()
+
+            if (basketRef.current && !basketRef.current.contains(e.target)) {
+              basketClose()
             }
-        }
+          }
 
-        document.addEventListener('click', hendelClick)
+        document.addEventListener('mousedown', hendelClick)
         return () => {
-            document.removeEventListener('click', hendelClick)
+            document.removeEventListener('mousedown', hendelClick)
         }
 
-    }, [basketRef])  
-
-
-
-
-    // //вывод товаров в козине
-
-    const showOrders = () => {
-        return (<div>
-            <Orders ref={basketDelite}/>
-            {/* <p className={style.summa}>Сумма: {ordersPrice}$</p>
-            <Link to='/payment'>
-                <MainButton onClickFunk={() => setCartOpen(!cartOpen)}>перейти к оплате</MainButton>
-            </Link> */}
-            
-          </div>)
-    }
-
-    const showNothing = () => {
-        return (<div className={style.empty}>
-            <h2>Товаров нет</h2>
-        </div>)
-    }
+    })
 
     const orders = useSelector(state => state.orders.orders)
 
@@ -108,9 +70,9 @@ export default function Header() {
                 </div>
             </div>
             
-                <div className={logoState?style.logo:classNames(style.logo, style.active)}>
+            <div className={logoState?style.logo:classNames(style.logo, style.active)}>
                 <Link to="/menu">root</Link>
-                </div>
+            </div>
             
         
             <div className={style.topMenu}>
@@ -134,6 +96,10 @@ export default function Header() {
                     </div>
                 </Link> */}
 
+                <div className={style.userBlock}>
+                    <SmallButton>Войти</SmallButton>
+                </div>
+
                 <div className={style.menuButtons}>
                     <img 
                         src="./icons/shopping-bag.png" alt="" 
@@ -151,8 +117,10 @@ export default function Header() {
                         <img src="./icons/close.png" alt="" />
                     </div>
                     {orders.length > 0 ?
-                        showOrders(orders):
-                        ~showNothing()
+                        <Basket/>:
+                        <div className={style.empty}>
+                            <h2>Товаров нет</h2>
+                        </div>
                     }
                 </div>
             }
