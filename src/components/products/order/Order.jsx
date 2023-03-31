@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { decrementCount, deliteOrder, incrementCount } from '../../../store/OrderSlice'
+import { decrementCount, deliteOrder, incrementCount } from '../../../store/products/OrderSlice'
 import style from './order.module.scss'
 
 export default function Order({ item }) {

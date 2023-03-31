@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { changeCurrentItems } from '../../../store/productsSlice'
+import { changeCurrentItems } from '../../../store/products/productsSlice'
 import Item from './Item'
 import style from './items.module.scss'
 

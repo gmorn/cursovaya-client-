@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { addNewOrder } from '../../../store/OrderSlice'
+import { addNewOrder } from '../../../store/products/OrderSlice'
 import MainButton from '../../UI/button/mainButton/MainButton'
 import style from './item.module.scss'
 

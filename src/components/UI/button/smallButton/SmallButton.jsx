@@ -5,7 +5,7 @@ export default function SmallButton({ children, onClickFunk }) {
   return (
     <button
       className={style.button}
-      onClick={() => onClickFunk()}
+      onClick={onClickFunk ? () => onClickFunk() : () => {}}
     >
       {children}
     </button>

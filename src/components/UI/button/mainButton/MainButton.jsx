@@ -9,7 +9,8 @@ export default function MainButton({children, onClickFunk}) {
     <div>
       <button
         className={style.button}
-        onClick={() => onClickFunk()}
+        
+        onClick={onClickFunk ? () => onClickFunk() : () => {}}
       >
         {children}
       </button>

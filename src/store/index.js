@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import categorySlice from "./categorySlice";
-import OrderSlice from "./OrderSlice";
-import productsSlice from "./productsSlice";
+import categorySlice from "./products/categorySlice";
+import OrderSlice from "./products/OrderSlice";
+import productsSlice from "./products/productsSlice";
 
 export default configureStore({
     reducer: {

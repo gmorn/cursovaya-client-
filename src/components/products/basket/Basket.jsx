@@ -5,7 +5,7 @@ import MainButton from '../../UI/button/mainButton/MainButton'
 import Orders from '../order/Orders'
 import style from './basket.module.scss'
 
-export default function Basket() {
+export default function Basket({ basketClose }) {
 
     const orders = useSelector(state => state.orders.orders)
     
@@ -24,12 +24,21 @@ export default function Basket() {
     }, [orders])
     
     return (
-        <>
-            <Orders/>
-            <p className={style.summa}>Сумма: {allPrice}$</p>
-            <Link to='/payment'>
-                <MainButton>перейти к оплате</MainButton>
-            </Link>
-        </>
+        <div className={style.basket}>
+            {orders.length > 0 
+                ?
+                <>
+                    <Orders/>
+                    <p className={style.summa}>Сумма: {allPrice}$</p>
+                    <Link to='/payment'>
+                        <MainButton onClickFunk={() => basketClose()}>перейти к оплате</MainButton>
+                    </Link>
+                </>
+                :
+                <div className={style.empty}>
+                    <h2>Товаров нет</h2>
+                </div>
+            }
+        </div>
     )
 }

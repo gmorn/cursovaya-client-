@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { switchCategory } from '../../../store/categorySlice'
-import { changeCurrentItems } from '../../../store/productsSlice'
+import { switchCategory } from '../../../store/products/categorySlice'
 import style from './categories.module.scss'
 
 export default function Categories() {
