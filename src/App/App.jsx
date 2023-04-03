@@ -7,6 +7,7 @@ import Menu from '../pages/menu/Menu'
 import Header from '../components/header/Header'
 import Footer from '../components/footer/Footer'
 import Login from '../pages/login/Login'
+import UserPage from '../pages/user/UserPage'
 
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
       <Header/>
       <Routes>
         <Route path='/' element={<Menu/>}/>
+        <Route path='/userPage' element={<UserPage/>}/>
         <Route path='/login' element={<Login/>}/>
       </Routes>
       <Footer/>

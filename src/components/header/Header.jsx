@@ -99,7 +99,7 @@ export default function Header() {
                     </Link> */}
 
                     <div className={style.userBlock}>
-                        <Link to='/login'>
+                        <Link to='/userPage'>
                             <SmallButton>Войти</SmallButton>
                         </Link>
                     </div>
