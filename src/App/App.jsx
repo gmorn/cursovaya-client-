@@ -8,6 +8,7 @@ import Header from '../components/header/Header'
 import Footer from '../components/footer/Footer'
 import Login from '../pages/login/Login'
 import UserPage from '../pages/user/UserPage'
+import { pullUser } from '../store/user/loginSlice'
 
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
 
   useEffect(() => {
     dispatch(fetchProducts())
+    dispatch(pullUser())
   }, [dispatch])
 
 

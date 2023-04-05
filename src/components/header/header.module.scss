@@ -105,11 +105,21 @@
       }
     }
 
-
-
     .userBlock {
       margin-right: 20px;
-      
+      display: flex;
+      align-items: center;
+
+      .user {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        
+        p {
+          color: #000;
+          
+        }
+      }
     }
 
     img:nth-child(4) {

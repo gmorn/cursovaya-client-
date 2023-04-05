@@ -13,6 +13,8 @@ export default function Header() {
     const [cartOpen, setCartOpen] = useState(false)
     const [logoState, setLogoSate] = useState(true)
 
+    const user = useSelector(state => state.user.user)
+
     const targetInput = () => {
         setInputFocus(false)
         setLogoSate(false)
@@ -99,9 +101,19 @@ export default function Header() {
                     </Link> */}
 
                     <div className={style.userBlock}>
+                    {user.name ? (
                         <Link to='/userPage'>
+                            <div className={style.user}>
+                            <p>{user.name}</p>
+                            <img src={user.userLogo} alt='' />
+                            </div>
+                        </Link>
+                        ) : (
+                        <Link to='/login'>
                             <SmallButton>Войти</SmallButton>
                         </Link>
+                    )}
+                        
                     </div>
 
                     <div className={style.menuButtons}>

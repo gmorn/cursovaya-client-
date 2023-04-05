@@ -1,18 +1,17 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
 export const fetchProducts = createAsyncThunk(
     'products/fetchProducts',
     //первый параметр при вызове функции 
     async (_, { rejectWithValue, dispatch }) => {
         try {
-            const response = await fetch('http://cursovaya/getprod')
-            if (!response.ok) {
-            throw new Error('Server Error!')
-            }
-            const data = await response.json()
+            const response = await axios.get('http://cursovaya/getprod')
+
+            // const data = await response.json()
             
             dispatch(changeCurrentItems(0))
-            return data
+            return response.data
         } catch (error) {
             return rejectWithValue(error.message)
         }
@@ -22,7 +21,7 @@ export const fetchProducts = createAsyncThunk(
 const setError = (state, action) => {
     state.status = 'rejected'
     state.error = action.payload
-  }
+}
 
 const productsSlise = createSlice({
     name: 'products',

@@ -1,13 +1,14 @@
 import React from 'react'
 import style from './formInput.module.scss'
 
-export default function FormInput({placeholder, onChangeFunc}) {
+export default function FormInput({placeholder, onChangeFunc, value}) {
   return (
     <input 
       className={style.formInput} 
       type="text" 
-      onChange={() => onChangeFunc()}
+      onChange={(e) => onChangeFunc(e)}
       placeholder={placeholder}
+      value={value}
     />
   )
 }
