@@ -9,9 +9,11 @@ export default function Item({ item }) {
 
   const dispatch = useDispatch()
 
+  const encodedObject = encodeURIComponent(JSON.stringify(item));
+
   return (
     <div className={style.item}>
-      <Link to={`/productCart`}>
+      <Link to={`/productCart?data=${encodedObject}`}>
         <div 
           className={style.image}
           style={{backgroundImage:`url(${JSON.parse(item.gallery)[0]})`}}    

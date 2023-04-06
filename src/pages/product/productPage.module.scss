@@ -1,0 +1,134 @@
+.productCart {
+    padding: 10px 30px;
+    padding-bottom: 90px;
+  
+    img {
+      width: 24px;
+    }
+    .image {
+      background-size: cover;
+      background-position: center center;
+      
+      background-blend-mode: multiply;
+    }
+  }
+      
+  .aboutProduct {
+    display: flex;
+    height: 340px;
+      
+    .gallery {
+      display: flex;
+      margin-right: 30px;
+      
+      .control {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-right: 20px;
+      
+        .image {
+          height: 100px;
+          width: 100px;
+          cursor: pointer;
+        }
+      }
+      
+      .main {
+        .image {
+          height: 340px;
+          width: 340px;
+        }
+      }
+    }
+  }
+      
+  .contentTitle {
+    display: flex;
+    // gap: 350px;
+    justify-content: space-between;
+        
+    h1 {
+      margin: 0;
+    }
+  }
+      
+  .description {
+    margin: 20px 0;
+  }
+      
+  .content {
+    button {
+      float: right;
+    }
+      
+    .ratingBlock {
+      float: left;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .addComments {
+      float: left;
+      margin-left: -40px;
+      margin-top: 160px;
+    }
+    
+    .starRating {
+      display: flex;
+    }
+    
+    .starsForm {
+      button {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+      }
+  
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      float: left;
+    }
+  
+    .formContent {
+      background: aliceblue;
+      border-radius: 10px;
+      padding: 20px;
+      width: 450px;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      z-index: 5;
+      
+      textarea {
+        width: 400px;
+        height: 250px;
+        resize: none;
+        padding: 10px;
+      
+        &::placeholder {
+          color: #000;
+        }
+      }
+      
+      .button {
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .comments {
+
+    h1 {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    h2 {
+      margin-top: 20px;
+    }
+  }

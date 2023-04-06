@@ -1,6 +1,21 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios";
 
+// export const getUser = createAsyncThunk(
+//   'user/getUser',
+//   async ( id, { rejectWithValue, dispatch }) => {
+//     try {
+//       const response = await axios.get(`http://cursovaya/user/${ id }`)
+//       // console.log(response.data[0]);
+      
+//       return response.data[0]
+
+//     } catch (error) {
+//       return rejectWithValue(error.message)
+//     }
+//   }
+// )
+
 export const fetchUser = createAsyncThunk(
   'user/fetchUser',
   async ( { name, password }, { rejectWithValue, dispatch }) => {
@@ -65,7 +80,7 @@ const userSlice = createSlice({
               if (cookie.startsWith('jwt' + '=')) {
                 state.user.jwt = cookie.substring('jwt'.length + 1) 
               }
-              if (cookie.startsWith('jwt' + '=')) {
+              if (cookie.startsWith('id' + '=')) {
                 state.user.id = cookie.substring('id'.length + 1) 
               }
             }
@@ -97,12 +112,20 @@ const userSlice = createSlice({
         state.status = 'loading'
         state.error = null
       },
-      [fetchUser.fulfilled]: (state, action) => {
+      [fetchUser.fulfilled]: (state) => {
           state.status = 'resolved'
-          // state.products = action.payload
       },
       [fetchUser.rejected]: setError,
       [createUser.rejected]: setError,
+      // [getUser.pending]: (state) => {
+      //   state.status = 'loading'
+      //   state.error = null
+      // },
+      // [getUser.fulfilled]: (state, action) => {
+      //     state.status = 'resolved'
+      //     state.commUser = action.payload
+      // },
+      // [getUser.rejected]: setError,
     }
 })
 
