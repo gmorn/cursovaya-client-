@@ -3,7 +3,6 @@ import categorySlice from "./products/categorySlice";
 import OrderSlice from "./products/OrderSlice";
 import productsSlice from "./products/productsSlice";
 import loginSlice from "./user/loginSlice";
-import commentSlice from "./products/commentSlice";
 
 
 export default configureStore({
@@ -12,6 +11,5 @@ export default configureStore({
         categories: categorySlice,
         orders: OrderSlice,
         user: loginSlice,
-        comment: commentSlice,
     }
 })

@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react'
 import style from './ratingStars.module.scss'
 
 export default function StarRating({getStars, countStars}) {
-    const [rating, setRating] = useState(countStars);
+    const [rating, setRating] = useState(0);
     const [hover, setHover] = useState(0);
     
+    useEffect(() => {
+        setRating(countStars)
+    }, [countStars])
 
     useEffect(() => {
         getStars(rating)

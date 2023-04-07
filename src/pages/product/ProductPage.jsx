@@ -5,9 +5,8 @@ import MainButton from '../../components/UI/button/mainButton/MainButton';
 import Mymodal from '../../components/UI/modal/MyModal';
 import StarRating from '../../components/UI/stars/RatingStars';
 import Comment from '../../components/products/comment/Comment';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import axios from 'axios';
-// import { addNewcomment, getComments } from '../../store/products/commentSlice';
 
 
 export default function ProductPage() {
@@ -19,7 +18,6 @@ export default function ProductPage() {
 
 
 
-    const dispatch = useDispatch()
 
     const person = useSelector(state => state.user.user)
 
@@ -27,91 +25,70 @@ export default function ProductPage() {
         getComments(item.id)
     }, [])
 
-    // const { comments, status } = useSelector(state => state.comment)
 
     const [comments, setComments] = useState([])
 
     const [mainImg, setMainImg] = useState(JSON.parse(item.gallery)[0])
-    // const [formState, setFormState] = useState(false)
     const [modal, setModal] = useState(false)
 
     //состояния для нового коментария
     const [commDesc, setCommDesc] = useState('')
     const [stars, setStars] = useState(0)
 
-    const [newComment, setNewComment] = useState({userId: '', prodId: '', description: '', rating: 0})
 
     const getComments = async (  id  ) => {
         try {
             const response = await axios.get(`http://cursovaya/comments/${id}`)
             setComments(response.data)
+            
         } catch (error) {
-            // return rejectWithValue(error.message)
+            console.log(error);
         }
     }
 
-    const addNewcomment = async (  { userId, prodId, description, rating } ) => {
+    const addNewcomment = async (  newComment ) => {
         try {
-            const response = await axios.post(`http://cursovaya/newcomment`, {
-                userId,
-                prodId,
-                description,
-                rating,
-            })
+            const response = await axios.post(`http://cursovaya/newcomment`, newComment)
             setComments([ ...comments, response.data ])
-            // return response.data
         } catch (error) {
-            // return rejectWithValue(error.message)
+            console.log(error);
         }
     }
 
-    useEffect(() => {
-
-    },[commDesc, stars])
-
-    const addComment = () => {
-        let userId
+    const addComment = async () => {
+        let id_user
         const cookies = document.cookie.split(';');
         for (let i = 0; i < cookies.length; i++) {
             const cookie = cookies[i].trim();
             if (cookie.startsWith('id' + '=')) {
-                userId = cookie.substring('id'.length + 1) 
+                id_user = cookie.substring('id'.length + 1) 
             }
         }
-        setNewComment({
-            userId,
-            prodId: item.id, 
+        const newComment = {
+            id_user,
+            id_prod: item.id, 
             description: commDesc,
             rating: stars
-        })
+        }
+        console.log(newComment);
+        setModal(false)
         addNewcomment(newComment)
-            // dispatch(addNewcomment(newComment))
     }
 
-    // useEffect(() => {
-    //     if (newComment.description) {
-    //         dispatch(addNewcomment(newComment))
-    //         // dispatch(getComments(item.id))
-    //     }
-    //     console.log(comments);
-    // }, [newComment])
+
+
 
     useEffect(() => {
-        setModal(false)
         setStars(0)
         setCommDesc('')
-        getComments(item.id)
-    },[comments])
+    },[modal])
 
     const switchMain = (image) => {
         setMainImg(image)
     }
 
     const getStars = (count) => {
-
-        
         setStars(count)
-        
     }
 
     return (
@@ -159,8 +136,6 @@ export default function ProductPage() {
                                 <MainButton onClickFunk={() => setModal(true)}>Оставить отзыв</MainButton>
                             </div>
                     }
-
-
                     <Mymodal
                         visible={modal}
                         setVisible={setModal}
@@ -183,7 +158,7 @@ export default function ProductPage() {
                 </div>
             </div>
             <div className={style.comments}>
-                {comments === 0?
+                {comments.length === 0?
                 <h1>тут нет отзывов!</h1>
                 :
                 <>
