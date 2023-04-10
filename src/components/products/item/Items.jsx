@@ -21,7 +21,7 @@ export default function Items({  }) {
       {
         !items.length
         ?
-        <h1>товаров данной категории нет!</h1>
+        <h1>Товаров данной категории нет!</h1>
         :
         items.map(item => (
         <Item 

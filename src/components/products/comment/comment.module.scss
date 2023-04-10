@@ -1,6 +1,8 @@
+@import '../../../style/constants.scss';
+
 .comment {
     padding: 10px;
-    background: #f5f5f5;
+    background: $color_ligth-yellow;
     margin-top: 20px;
     display: flex;
     flex-direction: column;

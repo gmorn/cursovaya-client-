@@ -6,7 +6,7 @@ export default function FormInput({placeholder, onChangeFunc, value}) {
     <input 
       className={style.formInput} 
       type="text" 
-      onChange={(e) => onChangeFunc(e)}
+      onChange={onChangeFunc?(e) => onChangeFunc(e): () => {}}
       placeholder={placeholder}
       value={value}
     />

@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+@import '../style/constants.scss';
+
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +9,8 @@
 }
 
 body {
-    background: #ffbd43;
+    // background: rgb(5, 117, 102);
+    background: $color_yellow;
     position: relative;
     padding: 30px 0;
     display: flex;
@@ -18,10 +21,11 @@ body {
 .App {
     width: 1200px;
     min-height: 92vh;
-    background: aliceblue;
+    background: $color_white;
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar {
     width: 0;
 }
+

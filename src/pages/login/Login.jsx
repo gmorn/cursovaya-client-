@@ -79,21 +79,21 @@ export default function Login() {
         </div>
         }
         <div className={style.switchBlock}>
-            <MainButton onClickFunk={switchLodin}>вход</MainButton>
-            <MainButton onClickFunk={switchReg}>регистрация</MainButton>
+            <MainButton onClickFunk={switchLodin}>Вход</MainButton>
+            <MainButton onClickFunk={switchReg}>Регистрация</MainButton>
         </div>
         <YellowLine/>
         {
             formState ? 
-                <MainButton onClickFunk={() => dispatch(fetchUser(user))}>войти</MainButton>:
-                <MainButton onClickFunk={() => registration()}>создать</MainButton>
+                <MainButton onClickFunk={() => dispatch(fetchUser(user))}>Войти</MainButton>:
+                <MainButton onClickFunk={() => registration()}>Создать</MainButton>
         }
         {
             formState ?
-                status === 'rejected' && <p className={style.message}>неверные данные</p>:
+                status === 'rejected' && <p className={style.message}>Неверные данные</p>:
                 (
                     (user.password !== user.repPassword && user.password && user.repPassword) ? <p className={style.message}>пароль не совпадают</p>:
-                    status === 'rejected' && <p className={style.message}>такое имя занято</p>
+                    status === 'rejected' && <p className={style.message}>Имя занято</p>
                 )
                 
         }

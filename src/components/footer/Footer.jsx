@@ -4,7 +4,7 @@ import style from  './footer.module.scss'
 export default function Footer() {
   return (
     <footer className={style.footer}>
-        все права защищены &copy;
+        Все права защищены &copy;
     </footer>
   )
 }

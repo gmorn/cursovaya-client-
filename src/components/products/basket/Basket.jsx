@@ -28,10 +28,12 @@ export default function Basket({ basketClose }) {
             {orders.length > 0 
                 ?
                 <>
-                    <Orders/>
+                    <div className={style.ordersBlock}>
+                        <Orders/>
+                    </div>
                     <p className={style.summa}>Сумма: {allPrice}$</p>
-                    <Link to='/payment'>
-                        <MainButton onClickFunk={() => basketClose()}>перейти к оплате</MainButton>
+                    <Link to='/paymentPage'>
+                        <MainButton onClickFunk={() => basketClose()}>Перейти к оплате</MainButton>
                     </Link>
                 </>
                 :

@@ -1,10 +1,12 @@
+@import '../../../style/constants.scss';
+
 .category {
     display: flex;
     padding-left: 40px;
     .categories div {
         display: inline-block;
         background: none;
-        border: 1px solid #000;
+        border: 1px solid $color_black;
         border-radius: 50px;
         padding: 10px 20px;
         margin-bottom: 25px;
@@ -13,10 +15,10 @@
         transition: all 500ms ease;
     
         &:hover {
-            border-color: #ffbd43;
-            background: #ffbd43;
+            border-color: $color_yellow;
+            background: $color_yellow;
             transform: scale(1.1);
-            color: #fff;
+            color: $color_white;
         }
     }
 }

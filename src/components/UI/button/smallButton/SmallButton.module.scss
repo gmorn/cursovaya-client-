@@ -1,14 +1,16 @@
+@import '../../../../style/constants.scss';
+
 .button {
     background: none;
     padding: 3px 5px;
     border-radius: 5px;
     font-weight: 600;
-    border: 2px solid #000;
+    border: 2px solid $color_black;
     transition: 300ms;
 
     &:hover {
         transform: scale(1.04);
-        background: #000;
-        color: aliceblue;
+        background: $color_black;
+        color: $color_white;
     }
 }

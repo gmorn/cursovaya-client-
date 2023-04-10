@@ -1,0 +1,55 @@
+.message {
+    width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+    height: 70vh;
+}
+
+.paymentPage {
+    display: flex;
+
+    img {
+        cursor: pointer;
+    }
+
+    .shopingBLock {
+        margin-right: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        padding: 30px;
+        width: 500px;
+
+        .orderBlock {
+            max-height: 250px;
+            padding: 20px;
+
+            overflow-y: scroll;
+
+            &::-webkit-scrollbar {
+                width: 4px;               /* ширина scrollbar */
+            }
+            
+            &::-webkit-scrollbar-track {
+            background: aliceblue;        /* цвет дорожки */
+            }
+        
+            &::-webkit-scrollbar-thumb {
+            background-color: rgb(117, 117, 117);    /* цвет плашки */
+            border-radius: 5px;       /* закругления плашки */
+            }
+        }
+
+        .summa {
+            
+        }
+    }
+
+    .paymentBlock {
+        margin-left: 100px;
+    }
+}
+

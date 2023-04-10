@@ -94,11 +94,6 @@ export default function Header() {
                         />
                         </div>
                     </div>
-                    {/* <Link to='/userPage'>
-                        <div className={style.userLogoBlock}>
-                            <UserLogo img={"./icons/defaultUser.png"}/>
-                        </div>
-                    </Link> */}
 
                     <div className={style.userBlock}>
                     {user.name ? (

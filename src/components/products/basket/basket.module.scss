@@ -2,6 +2,25 @@
     margin-bottom: 20px;
 }
 
+.ordersBlock {
+    max-height: 300px;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        width: 4px;               /* ширина scrollbar */
+    }
+    
+    &::-webkit-scrollbar-track {
+    background: aliceblue;        /* цвет дорожки */
+    }
+
+    &::-webkit-scrollbar-thumb {
+    background-color: rgb(117, 117, 117);    /* цвет плашки */
+    border-radius: 5px;       /* закругления плашки */
+    // border: 2px solid black;  /* padding вокруг плашки */
+    }
+}
+
 .empty {
 
     h2 {

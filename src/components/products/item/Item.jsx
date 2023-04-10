@@ -28,7 +28,7 @@ export default function Item({ item }) {
           <p>{item.rating}</p>
         </div>
       </div>
-      <MainButton onClickFunk={() => dispatch(addNewOrder(item))}>+ добавить</MainButton>
+      <MainButton onClickFunk={() => dispatch(addNewOrder(item))}>В корзину</MainButton>
     </div>
   )
 }

@@ -5,8 +5,9 @@ import MainButton from '../../components/UI/button/mainButton/MainButton';
 import Mymodal from '../../components/UI/modal/MyModal';
 import StarRating from '../../components/UI/stars/RatingStars';
 import Comment from '../../components/products/comment/Comment';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
+import { addNewOrder } from '../../store/products/OrderSlice';
 
 
 export default function ProductPage() {
@@ -25,6 +26,7 @@ export default function ProductPage() {
         getComments(item.id)
     }, [])
 
+    const dispatch = useDispatch()
 
     const [comments, setComments] = useState([])
 
@@ -129,7 +131,7 @@ export default function ProductPage() {
                         <img src="./icons/star.png" alt="" />
                         <p>{item.rating}</p>
                     </div>
-                    <MainButton>В корзину</MainButton>
+                    <MainButton onClickFunk={() => dispatch(addNewOrder(item))}>В корзину</MainButton>
                     {
                         person.name  &&
                             <div className={style.addComments}>
@@ -146,7 +148,7 @@ export default function ProductPage() {
                                 <StarRating getStars={getStars} countStars={stars}/>
                             </div>
                             <textarea 
-                                placeholder={'напишите отзыв'} 
+                                placeholder={'Напишите отзыв'} 
                                 onChange={(e) => setCommDesc(e.target.value)} 
                                 value={commDesc}
                             />
@@ -159,7 +161,7 @@ export default function ProductPage() {
             </div>
             <div className={style.comments}>
                 {comments.length === 0?
-                <h1>тут нет отзывов!</h1>
+                <h1>Тут нет отзывов!</h1>
                 :
                 <>
                     <h2>Отзывы:</h2>

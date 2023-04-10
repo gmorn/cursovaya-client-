@@ -1,3 +1,5 @@
+@import '../../style/constants.scss';
+
 .productCart {
     padding: 10px 30px;
     padding-bottom: 90px;
@@ -94,7 +96,7 @@
     }
   
     .formContent {
-      background: aliceblue;
+      background: $color_white;
       border-radius: 10px;
       padding: 20px;
       width: 450px;
@@ -111,7 +113,7 @@
         padding: 10px;
       
         &::placeholder {
-          color: #000;
+          color: $color_black;
         }
       }
       

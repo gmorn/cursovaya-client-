@@ -33,7 +33,7 @@ export default function UserPage() {
 
     return (
         <div>
-            <SmallButton onClickFunk={() => dispatch(logautUser())}>выйти</SmallButton>
+            <SmallButton onClickFunk={() => dispatch(logautUser())}>Выйти</SmallButton>
         </div>
     )
 }

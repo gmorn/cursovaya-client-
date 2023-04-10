@@ -10,6 +10,7 @@ import Login from '../pages/login/Login'
 import UserPage from '../pages/user/UserPage'
 import { pullUser } from '../store/user/loginSlice'
 import ProductPage from '../pages/product/ProductPage'
+import PaymentPage from '../pages/paymentPage.jsx/PaymentPage'
 
 
 export default function App() {
@@ -24,16 +25,15 @@ export default function App() {
 
   return (
     <div className='App'>
-
       <Header/>
       <Routes>
         <Route path='/' element={<Menu/>}/>
         <Route path='/userPage' element={<UserPage/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/productCart' element={<ProductPage/>}/>
+        <Route path='/paymentPage' element={<PaymentPage/>}/>
       </Routes>
       <Footer/>
-      
     </div>
   )
 }

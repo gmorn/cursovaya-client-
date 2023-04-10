@@ -1,8 +1,9 @@
+@import '../../../style/constants.scss';
+
 .item {
     width: 300px;
-    margin-bottom: 50px;
     overflow: hidden;
-    background: #f5f5f5;
+    background: $color_ligth-yellow;
     position: relative;
     display: flex;
     flex-direction: column;

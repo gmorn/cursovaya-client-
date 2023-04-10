@@ -11,10 +11,12 @@
     display: flex;
     margin-bottom: 10px;
     // align-items: ;
-    width: 280px;
+    // width: 280px;
     position: relative;
 
-
+    img {
+      width: 20px;
+    }
   
     .contentBlock {
       display: flex;
@@ -45,7 +47,7 @@
       align-items: center;
       margin-top: 5px;
       // margin-left: 90px;
-      right: 0;
+      right: 5px;
 
       p {
         font-size: 16px;
@@ -62,7 +64,7 @@
 
     .deliteButton {
       position: absolute;
-      right: 35px;
+      right: 40px;
       top: 30px;
   
       img {
