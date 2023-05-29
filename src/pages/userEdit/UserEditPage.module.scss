@@ -1,0 +1,93 @@
+@import '../../style/constants.scss';
+
+.userBlock {
+    display: flex;
+    padding: 20px;
+
+    .userLogoBlock {
+
+        position: relative;
+
+        .editIcon {
+
+            position: absolute;
+
+            background: $color_white;
+            
+            height: 30px;
+            width: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+
+            cursor: pointer;
+
+            top: -5px;
+            right: 15px;
+            
+            border: 1px solid #000;
+
+            img {
+                width: 18px;
+            }
+        }
+        
+        .userLogo {
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 20px;
+    
+            img {
+                width: 100px;
+                height: 100px;
+                object-fit: cover;
+
+            }
+    
+            -webkit-box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+            -moz-box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+            box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+        }
+
+
+    }
+
+
+    .userNameBlock {
+        width: 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .userName {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+
+        .editBlock {
+            display: none;
+            flex-direction: column;
+
+            &.active {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+
+        img {
+            width: 20px;
+            cursor: pointer;
+        }
+    }
+}
+
+.modalContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}

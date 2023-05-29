@@ -1,3 +1,5 @@
+@import '../../style/constants.scss';
+
 .message {
     width: 1200px;
     display: flex;
@@ -15,13 +17,45 @@
         cursor: pointer;
     }
 
+    .modalMessage {
+        display: flex;
+        flex-direction: column;
+        // align-items: center;
+        gap: 20px;
+        padding: 40px 20px;
+        background: $color_white;
+        border-radius: 10px;
+
+        .inf {
+
+            h2 {
+                margin-bottom: 10px;
+            }
+
+            ul {
+
+                padding: 10px;
+                li {
+                    // padding-left: 10px;
+                    list-style-type: none;
+                }
+            }
+
+        }
+
+        .buttonBlock {
+            display: flex;
+            gap: 20px;
+        }
+    }
+
     .shopingBLock {
         margin-right: 30px;
         display: flex;
         flex-direction: column;
         gap: 30px;
         padding: 30px;
-        width: 500px;
+        width: 550px;
 
         .orderBlock {
             max-height: 250px;

@@ -7,13 +7,6 @@ const orderSlice = createSlice ({
     },
     reducers: {
         addNewOrder(state, action) {
-
-            // const test = action.payload
-
-            // const newPayload = { ...action.payload, test: 1 };
-            // action.payload = newPayload;
-
-
             const cloneOrder = state.orders.find(order => order.id === action.payload.id)
 
             if ( cloneOrder ) {
@@ -36,12 +29,13 @@ const orderSlice = createSlice ({
             if (Number(cloneOrder.count) > 1) {
                 cloneOrder.count = Number(cloneOrder.count) - 1
             }
-            
+        },
+        deliteOrders(state) {
+            state.orders = []
         }
     }
-
 })
 
-export const { addNewOrder, deliteOrder, incrementCount, decrementCount } = orderSlice.actions
+export const { addNewOrder, deliteOrder, incrementCount, decrementCount, deliteOrders } = orderSlice.actions
 
 export default orderSlice.reducer

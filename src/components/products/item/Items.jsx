@@ -21,13 +21,13 @@ export default function Items({  }) {
       {
         !items.length
         ?
-        <h1>Товаров данной категории нет!</h1>
+          <h1>Товаров данной категории нет!</h1>
         :
-        items.map(item => (
-        <Item 
-          key={item.id} 
-          item={item} 
-        />
+          items.map(item => (
+          <Item 
+            key={item.id} 
+            item={item} 
+          />
       ))}
     </main>
   )

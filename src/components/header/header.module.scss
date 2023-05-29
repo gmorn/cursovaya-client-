@@ -53,6 +53,7 @@
   .topMenu {
     display: flex;
     align-items: center;
+    position: relative;
     font-weight: 600;
     font-size: 12px;
     height: 55px;
@@ -106,25 +107,53 @@
       }
     }
 
+
     .userBlock {
       margin-right: 20px;
       display: flex;
       align-items: center;
+      cursor: pointer;
 
       .user {
         display: flex;
         align-items: center;
         gap: 10px;
+
+        img {
+          object-fit: cover;
+          overflow: hidden;
+          border-radius: 50%;
+          width: 24px;
+          height: 24px;
+        }
         
         p {
           color: $color_black;
-          
         }
       }
     }
 
     img:nth-child(4) {
       margin-right: 15px;
+    }
+
+    .userMenu {
+      position: absolute;
+      top: 50px;
+      right: 0;
+      z-index: 10;
+      
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        li {
+          list-style-type: none;
+          cursor: pointer;
+          color: $color_black;
+        }
+      }
     }
   }
 

@@ -1,3 +1,5 @@
+@import '../../../style/constants.scss';
+
 .myModal {
     position: fixed;
     top: 0;
@@ -10,5 +12,15 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .myModalContent {
+        background: $color_white;
+        border-radius: 10px;
+        padding: 20px;
+        width: 450px;
+        min-height: 300px;
+        padding: 30px;
+        z-index: 5;
     }
 }

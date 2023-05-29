@@ -11,10 +11,16 @@ import UserPage from '../pages/user/UserPage'
 import { pullUser } from '../store/user/loginSlice'
 import ProductPage from '../pages/product/ProductPage'
 import PaymentPage from '../pages/paymentPage.jsx/PaymentPage'
+import UserEditPage from '../pages/userEdit/UserEditPage'
+import AdminPanel from '../pages/adminPanel/AdminPanel'
+import UserComments from '../pages/userConnemts/UserComments'
+import CreateProductPage from '../pages/createProductPage/CreateProductPage'
 
 
 export default function App() {
     
+
+  
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -32,6 +38,10 @@ export default function App() {
         <Route path='/login' element={<Login/>}/>
         <Route path='/productCart' element={<ProductPage/>}/>
         <Route path='/paymentPage' element={<PaymentPage/>}/>
+        <Route path='/userEdit' element={<UserEditPage/>}/>
+        <Route path='/adminPanel' element={<AdminPanel/>}/>
+        <Route path='/userComments' element={<UserComments/>}/>
+        <Route path='/newProduct' element={<CreateProductPage/>}/>
       </Routes>
       <Footer/>
     </div>

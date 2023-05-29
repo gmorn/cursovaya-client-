@@ -1,0 +1,65 @@
+.wrapper {
+    margin: 50px;
+}
+
+.userBLock {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    width: 1000px;
+    margin-bottom: 15px;
+    transition: 300ms;
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+
+    border-radius: 10px;
+
+
+    &:hover {
+        transform: scale(1.05);
+    }
+
+    .userData {
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        .userInf {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            left: 150px;
+
+            img {
+                width: 20px;
+                margin: 0 10px ;
+    
+                &:first-child {
+                    width: 26px;
+                }
+            }
+        }
+        
+    }
+
+    .buttonBlock {
+        display: flex;
+        align-items: center;
+        right: 0;
+        gap: 25px;
+    }
+
+    .userLogo {
+
+        img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+    }
+}

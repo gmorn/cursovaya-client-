@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import style from './productPage.module.scss'
-import {useLocation} from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
+
 import MainButton from '../../components/UI/button/mainButton/MainButton';
 import Mymodal from '../../components/UI/modal/MyModal';
 import StarRating from '../../components/UI/stars/RatingStars';
 import Comment from '../../components/products/comment/Comment';
-import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
+
 import { addNewOrder } from '../../store/products/OrderSlice';
+
+import style from './productPage.module.scss'
+
+import star from '../../icons/star.png'
 
 
 export default function ProductPage() {
@@ -43,7 +48,7 @@ export default function ProductPage() {
             const response = await axios.get(`http://cursovaya/comments/${id}`)
             setComments(response.data)
             
-        } catch (error) {
+        } catch ( error ) {
             console.log(error);
         }
     }
@@ -52,7 +57,8 @@ export default function ProductPage() {
         try {
             const response = await axios.post(`http://cursovaya/newcomment`, newComment)
             setComments([ ...comments, response.data ])
-        } catch (error) {
+            // getComments()
+        } catch ( error ) {
             console.log(error);
         }
     }
@@ -85,11 +91,11 @@ export default function ProductPage() {
         setCommDesc('')
     },[modal])
 
-    const switchMain = (image) => {
+    const switchMain = ( image ) => {
         setMainImg(image)
     }
 
-    const getStars = (count) => {
+    const getStars = ( count ) => {
         setStars(count)
     }
 
@@ -128,7 +134,7 @@ export default function ProductPage() {
                     </div>
                     <div className={style.description}><p>{item.description}</p></div>
                     <div className={style.ratingBlock}>
-                        <img src="./icons/star.png" alt="" />
+                        <img src={star} alt="" />
                         <p>{item.rating}</p>
                     </div>
                     <MainButton onClickFunk={() => dispatch(addNewOrder(item))}>В корзину</MainButton>

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchUser, logautUser } from '../../store/user/loginSlice'
-import SmallButton from '../../components/UI/button/smallButton/SmallButton'
 import { useNavigate } from 'react-router-dom'
+import HistoryItems from '../../components/products/history/historyItems/HistoryItems'
+import style from './userPage.module.scss'
 
 export default function UserPage() {
 
@@ -10,30 +10,23 @@ export default function UserPage() {
 
     const navigate = useNavigate()
 
-    const [user, setUser] = useState({
-        name: 'test',
-        password: '1',
-    })
-
-
 
     const { status } = useSelector(state => state.user)  
 
-    const person = useSelector(state => state.user.user)
+    const user = useSelector(state => state.user.user)
 
     useEffect(() => {
         navigate('/')
         
-    }, [person])
+    }, [user.id])
     
     useEffect(() => {
-        // dispatch(fetchUser(user))
         navigate('/userPage')
     }, [])
 
     return (
-        <div>
-            <SmallButton onClickFunk={() => dispatch(logautUser())}>Выйти</SmallButton>
+        <div className={style.wrapper}>
+            <HistoryItems />
         </div>
     )
 }

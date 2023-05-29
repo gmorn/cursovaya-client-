@@ -8,10 +8,20 @@
     border: $color_black solid 1px;
     transition: 300ms;
     cursor: pointer;
+
     &:hover {
         background: $color_yellow;
         color: $color_white;
         border : $color_yellow solid 1px;
         transform: scale(1.05);
+    }
+
+    &:disabled {
+        background: $color_yellow;
+        color: $color_white;
+        border : $color_yellow solid 1px;
+        &:hover {
+            transform: scale(1);
+        }
     }
 }

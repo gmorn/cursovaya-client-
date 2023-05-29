@@ -10,9 +10,19 @@
 
     .commentTitle {
       display: flex;
-      align-items: end;
+      align-items: center;
       gap: 10px;
       margin-bottom: 10px;
+
+      img {
+        width: 24px;
+        height: 24px;
+        object-fit: cover;
+
+        &:first-child {
+          border-radius: 50%;
+        }
+      }
     }
 
     .contetn {

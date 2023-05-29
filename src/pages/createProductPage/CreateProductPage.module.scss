@@ -1,0 +1,32 @@
+.container {
+    padding: 50px;
+    position: relative;
+    .form {
+        display: flex;
+        gap: 40px;
+        .firstForm {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            
+        }
+    }
+
+
+    textarea {
+        width: 400px;
+        height: 180px;
+        resize: none;
+        background: aliceblue;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    button {
+        position: absolute;
+        top: 300px;
+        float: right;
+        right: 110px;
+        z-index: 100;
+    }
+}

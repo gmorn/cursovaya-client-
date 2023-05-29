@@ -1,0 +1,34 @@
+.dragndrop {
+
+
+
+    label {
+        display: flex;
+        padding: 20px;
+        border: 2px dashed #ccc;
+        width: 280px;
+        height: 180px;
+        font-size: 20px;
+        margin-bottom: 10px;
+
+
+        h5 {
+            align-items: center;
+        }
+        
+
+
+        cursor: pointer;
+
+        &.dragging {
+            border-style: solid;
+        }
+    }
+    
+  
+
+    input {
+        display: none;
+    }
+
+  }

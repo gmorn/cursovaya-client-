@@ -1,0 +1,44 @@
+.span {
+    
+    .spanValue {
+        padding: 5px;
+        width: 200px;
+        border: 1px solid #000;
+        display: flex;
+        justify-content: center;
+        border-radius: 5px;
+
+
+        &.active {
+               border-bottom: 0;
+               border-radius: 5px 5px 0 0 ;
+        }
+
+    }
+
+    .spanContent {
+        display: none;
+        border: 1px solid #000;
+        border-radius: 5px;
+
+        &.active {
+            display: flex;
+            flex-direction: column;
+            
+            width: 200px;
+            padding: 5px;
+            border-radius: 0 0 5px 5px;
+
+            border-top: 0;
+        }
+
+        .contentBlock {
+            padding: 5px;
+
+            &:hover{
+                background: #d3d3d3;
+            }
+        }
+    }
+
+}

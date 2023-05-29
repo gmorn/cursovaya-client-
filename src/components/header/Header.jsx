@@ -1,10 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import style from './header.module.scss'
 import classNames from 'classnames'
 import Basket from '../products/basket/Basket'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import SmallButton from '../UI/button/smallButton/SmallButton'
+
+import location from '../../icons/location.png'
+import smartphone from '../../icons/smartphone.png'
+import search from '../../icons/search.png'
+import close from '../../icons/close.png'
+import shoppingBag from '../../icons/shopping-bag.png'
+import UserMenu from '../UI/menu/userMenu/UserMenu'
+import { logautUser } from '../../store/user/loginSlice'
 
 export default function Header() {
   
@@ -13,7 +21,13 @@ export default function Header() {
     const [cartOpen, setCartOpen] = useState(false)
     const [logoState, setLogoSate] = useState(true)
 
+    const [visible, setVisible] = useState(false)
+
+    const location = useLocation()
+
     const user = useSelector(state => state.user.user)
+
+    const  dispatch = useDispatch()
 
     const targetInput = () => {
         setInputFocus(false)
@@ -31,33 +45,50 @@ export default function Header() {
         setCartOpen(false)
     }
 
+    const openCart = () => {
+        setVisible(false)
+        setCartOpen(!cartOpen)
+    }
 
-
-    // //закрытие корззины при клике вне корзины
+    // закрытие корзины и  при клике вне корзины
 
     const basketRef = useRef(null)
     const basketButtonRef = useRef(null)
 
+    const menuRef = useRef(null)
+    const menuLinkRef = useRef(null)
+
+
     useEffect(() => {
-        if (!basketRef) return
+
+        if (!basketRef && !menuRef) return
         
+
         const hendelClick = (e) => {
-            
             if (basketButtonRef.current.contains(e.target)) return
+            if (menuLinkRef.current.contains(e.target)) return
 
             if (basketRef.current && !basketRef.current.contains(e.target)) {
-              basketClose()
+                basketClose()
+            } else if (menuRef.current && !menuRef.current.contains(e.target)) {
+                setVisible(false)
+            } else if (basketRef.current) {
+                setVisible(false)
             }
-          }
+        }
 
         document.addEventListener('mousedown', hendelClick)
         return () => {
             document.removeEventListener('mousedown', hendelClick)
         }
-
     })
 
-    const orders = useSelector(state => state.orders.orders)
+
+    useEffect(() => {
+        setVisible(false)
+    }, [user, location])
+
+
 
 
     return (
@@ -65,11 +96,11 @@ export default function Header() {
             <div className={style.headerTop}>
                 <div className={style.inf}>
                     <div className={style.infContent}>
-                        <img src="./icons/location.png" alt="" />
+                        <img src={location} alt="" />
                         <p>Челябинск, Проспект Победы, 25</p>
                     </div>
                     <div className={style.infContent}>
-                        <img src="./icons/smartphone.png" alt="" />
+                        <img src={smartphone} alt="" />
                         <p>+7(999)033-33-35</p>
                     </div>
                 </div>
@@ -81,41 +112,69 @@ export default function Header() {
             
                 <div className={style.topMenu}>
                     <div className={style.search}>
-                        <img src="./icons/search.png" alt=""/>
+                        <img src={search} alt=""/>
 
                         <input type="text" placeholder='Поиск' 
-                        // value={inputValue}
-                        // onChange={(e) => {checkInput(e.target.value)}}
-                        onFocus={() =>  targetInput()} onBlur={() => noTargetInput()}/>
+                            // value={inputValue}
+                            // onChange={(e) => {checkInput(e.target.value)}}
+                            onFocus={() =>  targetInput()} 
+                            onBlur={() => noTargetInput()}
+                        />
                         
-                        <div className={!inputFocus?style.close:classNames(style.close, style.active)}>
-                        <img src="./icons/close.png" alt="" 
+                        <div 
+                            className={
+                                // !inputFocus?style.close:classNames(style.close, style.active)
+                                classNames(
+                                    style.close,
+                                    inputFocus && style.active
+                                  )
+                            }
+                        >
+                        <img src={close} alt="" 
                             // onClick={() => checkInput('')}
                         />
                         </div>
                     </div>
-
                     <div className={style.userBlock}>
-                    {user.name ? (
-                        <Link to='/userPage'>
-                            <div className={style.user}>
-                            <p>{user.name}</p>
-                            <img src={user.userLogo} alt='' />
-                            </div>
-                        </Link>
-                        ) : (
-                        <Link to='/login'>
-                            <SmallButton>Войти</SmallButton>
-                        </Link>
-                    )}
-                        
+                        {user.name ? (
+                                <div 
+                                    className={style.user} 
+                                    onClick={() => setVisible(!visible)}
+                                    ref={menuRef}
+                                >
+                                    <p>{user.name}</p>
+                                    <img src={user.userLogo} alt='' />
+                                </div>
+                            ) : (
+                                <Link to='/login'>
+                                    <SmallButton>Войти</SmallButton>
+                                </Link>
+                        )}
                     </div>
-
+                    <div className={style.userMenu} ref={menuLinkRef}>
+                        <UserMenu visible={visible} >
+                            <ul>
+                                <Link to='/userPage'>
+                                    <li>История заказов</li>
+                                </Link>
+                                <Link to='/userEdit'>
+                                    <li>Редакировать профиль</li>
+                                </Link>
+                                <Link to='/'>
+                                    <li onClick={() => dispatch(logautUser())}>Выйти</li>
+                                </Link>
+                                {
+                                    user.role === 'admin' && <Link to='/adminPanel'><li>{user.role}</li></Link>
+                                }
+                            </ul>
+                        </UserMenu>
+                    </div>
+             
                     <div className={style.menuButtons}>
                         <img 
-                            src="./icons/shopping-bag.png" alt="" 
+                            src={shoppingBag} alt="" 
                             ref={basketButtonRef}
-                            onClick={() => setCartOpen(!cartOpen)}
+                            onClick={() => openCart()}
                         />
                     </div>
                 </div>
@@ -125,7 +184,7 @@ export default function Header() {
                             className={style.closeButton}
                             onClick={() => setCartOpen(!cartOpen)}
                         >
-                            <img src="./icons/close.png" alt="" />
+                            <img src={close} alt="" />
                         </div>
                         <Basket basketClose={basketClose}/>
                     </div>

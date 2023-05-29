@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { switchCategory } from '../../../store/products/categorySlice'
+import { switchCategory, fetchCategories } from '../../../store/products/categorySlice'
 import style from './categories.module.scss'
 
 export default function Categories() {
@@ -8,7 +8,10 @@ export default function Categories() {
   const categories = useSelector(state => state.categories.categories)
   const dispatch = useDispatch()
 
-
+  useEffect(() => {
+    dispatch(fetchCategories())
+  }, [])
+  
 
   return (
     <div className={style.category}>

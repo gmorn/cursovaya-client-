@@ -26,9 +26,6 @@ export default function Login() {
         setFormState(false)
     }
 
-    useEffect(() => {
-        
-    }, [])
 
     useEffect(() => {
         person.name && navigate('/')

@@ -1,0 +1,46 @@
+.commentBlock {
+
+    display: flex;
+    align-items: start;
+    padding: 20px;
+    margin-bottom: 20px;
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+
+    transition: 300ms;
+    
+    border-radius: 5px;
+    &:hover {
+        transform: scale(1.02);
+    }
+
+    .comment {
+        width: 950px;
+
+        .flex {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 10px;
+        }
+
+        img {
+            width: 24px;
+            
+        }
+    }
+
+    .product {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 20px;
+        
+        img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+    }
+}

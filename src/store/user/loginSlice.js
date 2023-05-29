@@ -1,35 +1,24 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import axios from "axios";
-
-// export const getUser = createAsyncThunk(
-//   'user/getUser',
-//   async ( id, { rejectWithValue, dispatch }) => {
-//     try {
-//       const response = await axios.get(`http://cursovaya/user/${ id }`)
-//       // console.log(response.data[0]);
-      
-//       return response.data[0]
-
-//     } catch (error) {
-//       return rejectWithValue(error.message)
-//     }
-//   }
-// )
+import UserServise from "../../services/UserService";
 
 export const fetchUser = createAsyncThunk(
   'user/fetchUser',
   async ( { name, password }, { rejectWithValue, dispatch }) => {
-
     try {
-      const response = await axios.post('http://cursovaya/login', {
-        name,
-        password,
-      })
+      const response = await UserServise.login(name, password)
 
       dispatch(pullUser(response.data))
     } catch (error) {
       return rejectWithValue(error.message)
     }
+  }
+)
+
+export const fetchNewUserLogo = createAsyncThunk(
+  'user/fetchNewUserLogo',
+  async ( { path }, {dispatch}) => {
+    console.log(path);
+    dispatch(newUserLogo(path))
 
   }
 )
@@ -38,10 +27,7 @@ export const createUser = createAsyncThunk(
   'user/createUser',
   async ({ name, password }, { rejectWithValue, dispatch }) => {
     try {
-      const response = await axios.post('http://cursovaya/reg', {
-        name,
-        password,
-      })
+      const response = await UserServise.reg(name, password)
 
       dispatch(pullUser(response.data))
     } catch (error) {
@@ -63,11 +49,19 @@ const userSlice = createSlice({
         error: null,
     },
     reducers: {
+      newUserLogo(state, action) {
+        state.user.userLogo = action.payload
+        console.log(state.user.userLogo);
+        let date = new Date()
+        date.setTime(date.getTime() + (24*60*60*1000))
+        const expires = 'expires' + date.toUTCString()
+
+        document.cookie = `userLogo=${state.user.userLogo}; expires=${expires}; path=/`
+
+      },
       pullUser(state, action) {
         if (!action.payload) {
           if (document.cookie) {
-
-
             const cookies = document.cookie.split(';');
             for (let i = 0; i < cookies.length; i++) {
               const cookie = cookies[i].trim();
@@ -83,6 +77,10 @@ const userSlice = createSlice({
               if (cookie.startsWith('id' + '=')) {
                 state.user.id = cookie.substring('id'.length + 1) 
               }
+              if (cookie.startsWith('role' + '=')) {
+                state.user.role = cookie.substring('role'.length + 1) 
+              }
+              
             }
           } 
         }else {
@@ -95,6 +93,7 @@ const userSlice = createSlice({
           document.cookie = `userLogo=${state.user.userLogo}; expires=${expires}; path=/`
           document.cookie = `jwt=${state.user.jwt}; expires=${expires}; path=/`
           document.cookie = `id=${state.user.id}; expires=${expires}; path=/`
+          document.cookie = `role=${state.user.role}; expires=${expires}; path=/`
         }
         
       },
@@ -102,7 +101,8 @@ const userSlice = createSlice({
         document.cookie = `name=${state.user.name}; max-age=0; path=/`
         document.cookie = `userLogo=${state.user.userLogo}; max-age=0; path=/`
         document.cookie = `jwt=${state.user.jwt}; max-age=0; path=/`
-        document.cookie = `id=${state.user.jwt}; max-age=0; path=/`
+        document.cookie = `id=${state.user.id}; max-age=0; path=/`
+        document.cookie = `role=${state.user.role}; max-age=0; path=/`
 
         state.user = {}
       }
@@ -117,18 +117,9 @@ const userSlice = createSlice({
       },
       [fetchUser.rejected]: setError,
       [createUser.rejected]: setError,
-      // [getUser.pending]: (state) => {
-      //   state.status = 'loading'
-      //   state.error = null
-      // },
-      // [getUser.fulfilled]: (state, action) => {
-      //     state.status = 'resolved'
-      //     state.commUser = action.payload
-      // },
-      // [getUser.rejected]: setError,
     }
 })
 
-export const { pullUser, logautUser } = userSlice.actions
+export const { pullUser, logautUser, newUserLogo } = userSlice.actions
 
 export default userSlice.reducer

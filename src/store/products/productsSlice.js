@@ -1,14 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import ProductService from "../../services/ProductService";
 
 export const fetchProducts = createAsyncThunk(
     'products/fetchProducts',
     //первый параметр при вызове функции 
     async (_, { rejectWithValue, dispatch }) => {
         try {
-            const response = await axios.get('http://cursovaya/getprod')
-
-            // const data = await response.json()
+            const response = await ProductService.getProducts()
             
             dispatch(changeCurrentItems(0))
             return response.data

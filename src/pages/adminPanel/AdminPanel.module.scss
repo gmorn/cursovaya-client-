@@ -1,0 +1,32 @@
+@import '../../style/constants.scss';
+
+.headerWrapper {
+    width: 800px;
+    margin: 0 auto;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+    margin: 0 auto;
+
+    h3 {
+        cursor: pointer;
+        transition: 300ms;
+
+        &:hover {
+            // color: $color_yellow;
+            transform: scale(1.05);
+        }
+
+        &:active {
+            color: $color_yellow;
+            transform: scale(1);
+        }
+
+        &.active {
+            border-bottom: 2px solid $color_yellow;
+        }
+    }
+}
